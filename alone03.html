@@ -1,0 +1,148 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossOrigin="anonymous">
+    <style>
+        #total-points {
+            width: 10px;
+            margin-bottom: 200px;
+            font-size: 40px;
+        }
+
+        #submit-button {
+            margin-top: 200px;
+            float: right;
+        }
+
+        .icon {
+            position: absolute;
+            right: 0;
+            top: 5px;
+            font-family: "Rage Italic";
+            padding-right: 12px;
+        }
+
+        .valori {
+            position: relative;
+            margin-top: 25px;
+        }
+
+        .card-text-styled {
+            font-family: Algerian;
+        }
+
+        .card-body-styled {
+            padding: 3.15rem;
+            background: indianred;
+        }
+
+        ul {
+            font-style: italic;
+            font-family: "Rage Italic", sans-serif;
+            font-size: 18px;
+
+        }
+    </style>
+</head>
+<body>
+<div className="container">
+    <div className="row justify-content-lg-center">
+        <div className="col col-lg-2">
+            <span id="total-points">0</span><strong> points</strong>
+        </div>
+    </div>
+    <form id="quiz">
+        <div id="content"></div>
+    </form>
+</div>
+<script>
+
+let quiz = [
+    {
+      question: 'what is the result of 1 + 1 ?',
+      answer: 2,
+      points: 1,
+      bonus: null
+    },
+    {
+      question: 'what is the result of 1 multiplied by 0 ?',
+      answer: 0,
+      points: 10,
+      bonus: null
+    },
+    {
+      question: 'what is the result of 1 divided by 0 ?',
+      answer: 0,
+      points: 20,
+      bonus: 30
+    },
+    {
+      question: 'what is the result of 12 multiplied by 55 ?',
+      answer: 660,
+      points: 5,
+      bonus: 10
+    }
+  ];
+
+
+
+
+  let targetDiv = document.getElementById("content")
+  let form = document.getElementById("quiz")
+
+  function generate(generate){
+    
+    let html = ""
+    let counter = 1
+        for(let i=0; i<=generate.length-1; i++){
+            html+=`${counter}. ${generate[i].question}`
+            html+=`<input type="text" name="answer_${counter}">`
+
+            counter++
+
+        }
+        html+=`<button type="Submit" id="click">Click me!</button>`
+  
+  targetDiv.insertAdjacentHTML("beforeend", html)
+  console.log(html, "html")
+  }
+  
+ 
+  generate(quiz)
+
+  
+
+  document.getElementById("asd").addEventListener("click", function(e){
+    e.preventDefault()
+
+    let formData = new FormData(form)
+    console.log(formData, "formData")
+    let userPoints = 0
+
+    for(let i=0; i<=quiz.length-1; i++){
+        let answerUnicCounter = i+1
+        let answer = formData.get("answer_"+answerUnicCounter)
+
+        console.log(quiz[i].answer, "raspuns corect")
+        console.log(answer == quiz[i].answer, "comparatia")
+        console.log(answer, "ce scriu eu")
+
+        if(answer == quiz[i].answer && answer != ""){
+                userPoints += quiz[i].points
+        } if(quiz[i].bonus){
+                userPoints += quiz[i].bonus
+        }
+
+    }
+
+
+    console.log(userPoints, "userPoints")
+    document.getElementById("total-points").innerHTML=userPoints
+  })
+  
+
+ 
+
+
+</script>
+</body>
