@@ -62,13 +62,13 @@ let quiz = [
       question: 'what is the result of 1 + 1 ?',
       answer: 2,
       points: 1,
-      bonus: null
+      bonus: 5
     },
     {
       question: 'what is the result of 1 multiplied by 0 ?',
       answer: 0,
       points: 10,
-      bonus: null
+      bonus: 7
     },
     {
       question: 'what is the result of 1 divided by 0 ?',
@@ -123,7 +123,7 @@ generate(quiz)
       let userPoints = 0
 
       for(let i=0; i<=quiz.length-1; i++){
-          let answerUnicCounter = i+1
+          let answerUnicCounter = i+1 //am generat un alt counter 
           let answer = formData.get("answer_"+answerUnicCounter)
 
           console.log(quiz[i].answer, "raspuns corect")
@@ -132,13 +132,15 @@ generate(quiz)
 
           if(answer == quiz[i].answer && answer != ""){
                 userPoints += quiz[i].points
-          }if(quiz[i].bonus){
-                userPoints += quiz[i].bonus
-          }
+          
+                if(quiz[i].bonus){
+                    userPoints += quiz[i].bonus
+                }
+            }
 
 
           console.log(userPoints, "userPoints")
-          document.getElementById("total-points").innerHTML=userPoints
+          document.getElementById("total-points").innerHTML=userPoints // schimba textul din elem cu id total-points
       }
   })
 

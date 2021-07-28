@@ -1,0 +1,242 @@
+<html>
+<head>
+<style>
+.product-view{
+    border-style: solid;
+    margin-bottom: 25px;
+    width: 150px;
+    display: inline-block;
+    margin-right: 10px;
+    min-height: 250px;
+    
+}
+.styled-name{
+    font-size: 25px;
+
+}
+.product-whith-discount{
+    color:red;
+    font-weight: 1200;
+    font-size: 25px;
+}
+.cut-price{
+    text-decoration: line-through;
+}
+
+</style>
+
+</head>
+
+<body>
+    <div id="content"></div>
+<script>
+
+
+let products = [
+	{
+		id: 1,
+		price: 200,
+		cut_price: 165.99,
+		categ_name: 'Tricouri',
+		name: 'Tricou copii',
+		stock: 10,
+		cut_price_until: '2021-07-29',
+		warehouse: 'Iasi'	
+	},
+	{
+		id: 2,
+		price: 250,
+		cut_price: 175,
+		categ_name: 'Haine',
+		name: 'haine de ploaie impremeabila culoare verde',
+		stock: 10,
+		cut_price_until: '2021-07-28',
+		warehouse: 'Botosani'	
+	},
+	{
+		id: 3,
+		price: 2000,
+		cut_price: 1650,
+		categ_name: 'Haine',
+		name: 'Haina de vara super cool',
+		stock: 20,
+		cut_price_until: '2021-07-29',
+		warehouse: 'Iasi'	
+	},
+	{
+		id: 4,
+		price: 2500,
+		cut_price: 959,
+		categ_name: 'Tricouri',
+		name: 'tricou lacoste for man',
+		stock: 100,
+		cut_price_until: '2021-08-04',
+		warehouse: 'Alba'	
+	},
+	{
+		id: 5,
+		price: 200,
+		cut_price: 165,
+		categ_name: 'Hanorace',
+		name: 'hanorac adidas clima cool',
+		stock: 10,
+		cut_price_until: '2021-07-29',
+		warehouse: 'Iasi'	
+	},
+	{
+		id: 6,
+		price: 200,
+		cut_price: 165,
+		categ_name: 'Hanorace',
+		name: 'hanorac adidas 2021',
+		stock: 10,
+		cut_price_until: '2021-07-29',
+		warehouse: 'Iasi'	
+	},
+	{
+		id: 7,
+		price: 200,
+		cut_price: 165,
+		categ_name: 'Tricouri',
+		name: 'tricou jordan',
+		stock: 10,
+		cut_price_until: '2021-07-29',
+		warehouse: 'cluj'	
+	},
+
+	{
+		id: 8,
+		price: 250,
+		cut_price: 200,
+		categ_name: 'Tricouri',
+		name: 'tricou A',
+		stock: 10,
+		cut_price_until: '2021-07-29',
+		warehouse: 'Iasi'	
+	},
+	{
+		id: 1,
+		price: 200,
+		cut_price: 165,
+		categ_name: 'Tricouri',
+		name: 'tricou de bumbac barbati',
+		stock: 10,
+		cut_price_until: '2021-07-29',
+		warehouse: 'Iasi'	
+	},
+	{
+		id: 1,
+		price: 200,
+		cut_price: 165,
+		categ_name: 'Tricouri',
+		name: 'tricou de bumbac dama',
+		stock: 10,
+		cut_price_until: '2021-07-29',
+		warehouse: 'Craiova'	
+	},
+	{
+		id: 1,
+		price: 200,
+		cut_price: 165.55,
+		categ_name: 'Hanorace',
+		name: 'hanorac Jordan',
+		stock: 10,
+		cut_price_until: '2021-07-29',
+		warehouse: 'Oradea'	
+	},
+
+]
+
+
+function generateProductList(products){
+
+    let html = ""
+
+    let T_shirts = products.filter(function (product) {return product.categ_name == "Tricouri"})
+    console.log(T_shirts, "T_shirts")
+    html += `<h1>Tricouri</h1>`
+
+    for(let i=0; i<=T_shirts.length-1; i++){
+        html += `<div class="product-view">`
+        html += `<div class="styled-name">${T_shirts[i].name}</div>`
+		
+        let supra = "00"
+        let price = ""
+
+        if(T_shirts[i].cut_price.toString().includes(".")){
+            let cut_price_parts = T_shirts[i].cut_price.toString().split(".")
+            supra = cut_price_parts[1]
+            price = cut_price_parts[0]
+            console.log(cut_price_parts, "cut_price_parts")
+        }else{
+            price = T_shirts[i].cut_price
+        }
+
+        html += `<div><span class=product-whith-discount>${price}<sup>${supra}</sup></span>|<span class="cut-price">${price}<sup>${supra}</sup></span></div>`
+        html += `<div>${T_shirts[i].warehouse}</div>`
+        html += `<div>${T_shirts[i].stock}</div>`
+        html += `<div><i>${T_shirts[i].cut_price_until}</i></div>`
+        html += `</div>`
+        
+    }
+
+    html += `<hr>`
+
+    let clothes = products.filter((function (product) {return product.categ_name == "Haine"}))
+    console.log(clothes, "clothes")
+    html += `<h1>Haine</h1>`
+    for(let i=0; i<=clothes.length-1; i++){
+        html += `<div class="product-view">`
+        html += `<div class="styled-name">${clothes[i].name}</div>`
+        html += `<div><span class=product-whith-discount>${clothes[i].cut_price}<sup>00</sup></span>|<span class="cut-price">${clothes[i].price}<sup>00</sup></span></div>`
+        html += `<div>${clothes[i].warehouse}</div>`
+        html += `<div>${clothes[i].stock}</div>`
+        html += `<div><i>${clothes[i].cut_price_until}</i></div>`
+        html += `</div>`
+
+    }
+    html += `<hr>`
+
+    let hood = products.filter((function (product) {return product.categ_name == "Hanorace"}))
+    console.log(hood, "hood")
+    html += `<h1>Hanorace</h1>`
+    for(let i=0; i<=hood.length-1; i++){
+            html += `<div class="product-view">`
+            html += `<div class="styled-name">${hood[i].name}</div>`
+
+            let supra = "00"
+            let price = ""
+
+            if(hood[i].cut_price.toString().includes(".")){
+                let cut_price_parts1 = hood[i].cut_price.toString().split(".")
+                supra = cut_price_parts1[1]
+                price = cut_price_parts1[0]
+
+            }else{
+                price = hood[i].cut_price 
+            }
+
+
+            html += `<div><span class=product-whith-discount>${price}<sup>${supra}</sup></span>|<span class="cut-price">${price}<sup>${supra}</sup></span></div>`
+            html += `<div>${hood[i].warehouse}</div>`
+            html += `<div>${hood[i].stock}</div>`
+            html += `<div><i>${hood[i].cut_price_until}</i></div>`
+            html += `</div>`
+    }
+    document.getElementById("content").insertAdjacentHTML("beforeend", html)
+}
+generateProductList(products)
+
+
+
+
+// vreau sa afisez produsele in functie de categ_name
+
+// 1. functia genereaza o lista de produse
+// 2. for - 
+
+// daca pretul contine punct ceva (.55, .99) trebuie sa facem split dupa punct si sa luam al doilea element din array
+
+</script>
+</body>
+</html>
