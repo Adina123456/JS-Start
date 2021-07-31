@@ -1,0 +1,329 @@
+<html>
+<head>
+    <style>
+        .product-view{
+            border-style: solid;
+            margin-bottom: 25px;
+            width: 150px;
+            display: inline-block;
+            margin-right: 10px;
+            min-height: 250px;
+            
+        }
+        .styled-name{
+            font-size: 25px;
+        
+        }
+        .product-with-discount{
+            color:red;
+            font-weight: 1200;
+            font-size: 25px;
+        }
+        .cut-price{
+            text-decoration: line-through;
+        }
+        
+        </style>
+
+</head>
+
+
+
+<body>
+
+    <div>
+        <input type="radio" name="filter1" value="Haine">Haine
+        <input type="radio" name="filter2" value="Hanorace">Hanorace
+        <input type="radio" name="filter3" value="Tricouri">Tricouri
+    </div>
+
+<div id="content"></div>
+</body>
+
+<script>
+
+
+let categoriesT = [
+	{
+		name: 'Haine',
+		products: [
+			{
+				name: 'Haine pentru copii 2 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Haine pentru copii 4 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Haine pentru copii 5 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Haine pentru copii 6 ani',
+				price: 110,
+				cut_price: 90,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Teleorman'	
+			},
+			{
+				name: 'Haine pentru copii 7 ani',
+				price: 140,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Focsani'	
+			}
+		]
+	},
+	{
+		name: 'Hanorace',
+		products: [
+			{
+				name: 'Hanorace pentru copii 2 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Hanorace pentru copii 4 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Hanorace pentru copii 5 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Hanorace pentru copii 6 ani',
+				price: 110,
+				cut_price: 90,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Teleorman'	
+			},
+			{
+				name: 'Hanorace pentru copii 7 ani',
+				price: 140,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Focsani'	
+			}
+		]
+	},
+	{
+		name: 'Tricouri',
+		products: [
+			{
+				name: 'Tricouri pentru copii 2 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Tricouri pentru copii 4 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Tricouri pentru copii 5 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Tricouri pentru copii 6 ani',
+				price: 110,
+				cut_price: 90,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Teleorman'	
+			},
+			{
+				name: 'Tricouri pentru copii 7 ani',
+				price: 140,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Focsani'	
+			}
+		]
+	}
+]
+
+
+
+function generateCategoryProducts(categoriesT){
+
+document.getElementById("content").innerHTML = "";
+
+let html = ""
+
+    for(let i=0; i<=categoriesT.length-1; i++){
+        html += `${categoriesT[i].name}`
+        let endDiv = 0
+
+    
+        for(let j=0; j<=categoriesT[i].products.length-1; j++){
+            let product = categoriesT[i].products[j]
+            
+
+            html += `<div class="product-view">`
+            html += `<div class="styled-name">${product.name}</div>`
+            html += `<div><span class="product-with-discount">${product.price}</span>`
+            html += `<span class="cut-price">${product.cut_price}</span>`
+            html += `</div>`
+            html += `<div class="q">${product.quantity}</div>`
+            html += `<div class="w">${product.warehouse}</div>`
+            html += `</div>`
+
+            endDiv++
+            if(endDiv == categoriesT[i].products.length){
+                html += `<br>`
+            }
+        }
+
+    }
+
+
+document.getElementById("content").insertAdjacentHTML("beforeend", html)
+
+}
+
+
+generateCategoryProducts(categoriesT)
+// var filters = document.getElementsByName("filter");
+
+// for(let i=0; i<=filters.length-1; i++){
+//     let filter = filters[i]
+//     filter.addEventListener("click", function(e){
+//         console.log(e.target, "target")
+//         console.log(e.target.value, "value")
+//         let iKnowTheFilter = e.target.value //haine, hanorace, tricouri
+
+//         let targetCategory = categoriesT.filter(function (categ){
+//            return iKnowTheFilter == categ.name
+           
+//         })
+        
+        
+//         generateCategoryProducts(targetCategory)
+//     })
+// }
+
+// mai sus este cu acelasi name de la input
+
+let globalFilters = []
+
+let clothes = document.getElementsByName("filter1")[0];
+
+clothes.addEventListener("click", function(e){
+  // dau click pe haine: globalFilters va fi un array care va contine "Haine"
+    globalFilters.push(e.target.value)
+    
+    let categories = applyFilters(globalFilters)
+    generateCategoryProducts(categories)
+
+})
+
+let T_shirt = document.getElementsByName("filter3")[0];
+
+T_shirt.addEventListener("click", function(e){
+  // daca dau click pe Tricouri si inainte am dat click pe haine: globalFilters va fi un array care va contine "Haine", "Triouri"
+    globalFilters.push(e.target.value)
+
+    let categories = applyFilters(globalFilters)
+    generateCategoryProducts(categories)
+
+})
+
+let hoods = document.getElementsByName("filter2")[0];
+
+hoods.addEventListener("click", function(e){
+    globalFilters.push(e.target.value)
+
+    let categories = applyFilters(globalFilters)
+    generateCategoryProducts(categories)
+
+})
+
+
+function applyFilters(filter) {
+	
+	// haine, hanorace
+    console.log(filter, "filter")
+  // imi construiesc cele trei categorii pe care le stiu ca le am de afisat
+	let haine = [];
+	let hanorace = [];
+	let tricouri = [];
+
+	//output-ul il setez ca fiind null
+	let output = null;
+
+	// daca globalFilter-ul nostru contine "Haine" atunci cauta in variabila globala "categoriesT" categoria cu numele Haine
+	if (filter.includes('Haine')) {
+       let findHaineCateg = categoriesT.find(categ => categ.name == 'Haine')
+       haine.push(findHaineCateg)
+	}
+// daca globalFilter-ul nostru contine "Hanorace" atunci cauta in variabila globala "categoriesT" categoria cu numele Hanorace
+	if (filter.includes('Hanorace')) {
+        let findHanoraceCateg = categoriesT.find(categ => categ.name == 'Hanorace')
+        hanorace.push(findHanoraceCateg)
+	}
+// daca globalFilter-ul nostru contine "Tricouri" atunci cauta in variabila globala "categoriesT" categoria cu numele Tricouri
+	if (filter.includes('Tricouri')) {
+	    let findTricouriCateg = categoriesT.find(categ => categ.name == 'Tricouri')
+		tricouri.push(findTricouriCateg)
+	}	
+
+	// daca cele trei inputuri tip radio sunt bifate, output-ul va fi, tricouri concatenat cu hanorce si haine
+	if (tricouri && hanorace && haine) {
+		output = tricouri.concat(hanorace, haine)
+	// daca sunt bifate tricouri si hanorace, atunci la tricouri concatenam hanorace
+	} else  if (tricouri && hanorace) {
+		output = tricouri.concat(hanorace)
+	} else  if (tricouri && haine) {
+		output = tricouri.concat(haine)
+	} else if (tricouri) {
+		output = tricouri
+	} else if (haine) {
+		output = haine
+	} else if (hanorace) {
+		output = hanorace
+	}
+	
+	return output
+}
+
+</script>
+</html>

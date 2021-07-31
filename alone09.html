@@ -1,0 +1,224 @@
+<html>
+<head>
+
+    <style>
+        .product-view{
+            border-style: solid;
+            margin-bottom: 25px;
+            width: 150px;
+            display: inline-block;
+            margin-right: 10px;
+            min-height: 250px;
+            
+        }
+        .styled-name{
+            font-size: 25px;
+        
+        }
+        .product-with-discount{
+            color:red;
+            font-weight: 1200;
+            font-size: 25px;
+        }
+        .cut-price{
+            text-decoration: line-through;
+        }
+        
+        </style>
+</head>
+
+<body>
+    <div id="content">
+
+    </div>
+
+
+<script>
+
+let categoriesT = [
+	{
+		name: 'Haine',
+		products: [
+			{
+				name: 'Haine pentru copii 2 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Haine pentru copii 4 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Haine pentru copii 5 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Haine pentru copii 6 ani',
+				price: 110,
+				cut_price: 90,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Teleorman'	
+			},
+			{
+				name: 'Haine pentru copii 7 ani',
+				price: 140,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Focsani'	
+			}
+		]
+	},
+	{
+		name: 'Hanorace',
+		products: [
+			{
+				name: 'Hanorace pentru copii 2 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Hanorace pentru copii 4 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Hanorace pentru copii 5 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Hanorace pentru copii 6 ani',
+				price: 110,
+				cut_price: 90,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Teleorman'	
+			},
+			{
+				name: 'Hanorace pentru copii 7 ani',
+				price: 140,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Focsani'	
+			}
+		]
+	},
+	{
+		name: 'Tricouri',
+		products: [
+			{
+				name: 'Tricouri pentru copii 2 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Tricouri pentru copii 4 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Tricouri pentru copii 5 ani',
+				price: 120,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Iasi'	
+			},
+			{
+				name: 'Tricouri pentru copii 6 ani',
+				price: 110,
+				cut_price: 90,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Teleorman'	
+			},
+			{
+				name: 'Tricouri pentru copii 7 ani',
+				price: 140,
+				cut_price: 100,
+				in_stock: true, 
+				quantity: 10,
+				warehouse: 'Focsani'	
+			}
+		]
+	}
+]
+
+
+function generateCategoryProducts(categoriesT){
+console.log(categoriesT, "categoriesT")
+
+let html = ""
+
+    for(let i=0; i<=categoriesT.length-1; i++){
+        html += `${categoriesT[i].name}`
+        let endDiv = 0
+
+    
+        for(let j=0; j<=categoriesT[i].products.length-1; j++){
+            let product = categoriesT[i].products[j]
+            console.log(product, "product")
+
+            html += `<div class="product-view">`
+            html += `<div class="styled-name">${product.name}</div>`
+            html += `<div><span class="product-with-discount">${product.price}</span>`
+            html += `<span class="cut-price">${product.cut_price}</span>`
+            html += `</div>`
+            html += `<div class="q">${product.quantity}</div>`
+            html += `<div class="w">${product.warehouse}</div>`
+            html += `</div>`
+
+            endDiv++
+            if(endDiv == categoriesT[i].products.length){
+                html += `<br>`
+            }
+        }
+
+    }
+
+
+document.getElementById("content").insertAdjacentHTML("beforeend", html)
+
+}
+
+
+generateCategoryProducts(categoriesT)
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
