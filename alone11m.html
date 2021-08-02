@@ -22,12 +22,10 @@
         .cut-price{
             text-decoration: line-through;
         }
-        
-        </style>
+
+    </style>
 
 </head>
-
-
 
 <body>
 
@@ -36,12 +34,11 @@
         <input type="radio" name="filter2" value="Hanorace">Hanorace
         <input type="radio" name="filter3" value="Tricouri">Tricouri
     </div>
-
-<div id="content"></div>
+<div id="content">
+</div>
 </body>
 
 <script>
-
 
 let categoriesT = [
 	{
@@ -181,22 +178,18 @@ let categoriesT = [
 	}
 ]
 
-
-
 function generateCategoryProducts(categoriesT){
 
-document.getElementById("content").innerHTML = "";
+document.getElementById("content").innerHTML="";
 
-let html = ""
+let html = "";
 
     for(let i=0; i<=categoriesT.length-1; i++){
-        html += `${categoriesT[i].name}`
-        let endDiv = 0
+    html += `${categoriesT[i].name}`
+    let endDiv = 0
 
-    
         for(let j=0; j<=categoriesT[i].products.length-1; j++){
             let product = categoriesT[i].products[j]
-            
 
             html += `<div class="product-view">`
             html += `<div class="styled-name">${product.name}</div>`
@@ -208,114 +201,86 @@ let html = ""
             html += `</div>`
 
             endDiv++
-            if(endDiv == categoriesT[i].products.length){
-                html += `<br>`
-            }
-        }
 
+                if(endDiv == categoriesT[i].products.length){
+                    html += `<br>`
+                }
+        }
     }
 
-
 document.getElementById("content").insertAdjacentHTML("beforeend", html)
-
 }
 
-
 generateCategoryProducts(categoriesT)
-// var filters = document.getElementsByName("filter");
 
-// for(let i=0; i<=filters.length-1; i++){
-//     let filter = filters[i]
-//     filter.addEventListener("click", function(e){
-//         console.log(e.target, "target")
-//         console.log(e.target.value, "value")
-//         let iKnowTheFilter = e.target.value //haine, hanorace, tricouri
 
-//         let targetCategory = categoriesT.filter(function (categ){
-//            return iKnowTheFilter == categ.name
-           
-//         })
-        
-        
-//         generateCategoryProducts(targetCategory)
-//     })
-// }
-
-// mai sus este cu acelasi name de la input
 
 let globalFilters = []
 
-
-let clothes = document.getElementsByName("filter1")[0];
+let clothes  = document.getElementsByName("filter1")[0]
 clothes.addEventListener("click", function(e){
     globalFilters.push(e.target.value)
-    
     let categories = applyFilters(globalFilters)
-    console.log(categories, "categories")
-    
+    generateCategoryProducts(categories)
 })
 
-let T_shirt = document.getElementsByName("filter3")[0];
-T_shirt.addEventListener("click", function(e){
-    globalFilters.push(e.target.value)
-
-    let categories = applyFilters(globalFilters)
-    console.log(categories, "categories")
-
-})
-
-let hoods = document.getElementsByName("filter2")[0];
+let hoods = document.getElementsByName("filter2")[0]
 hoods.addEventListener("click", function(e){
     globalFilters.push(e.target.value)
-
     let categories = applyFilters(globalFilters)
-    console.log(categories, "categories")
+    generateCategoryProducts(categories)
+})
 
+let T_shirt = document.getElementsByName("filter3")[0]
+T_shirt.addEventListener("click", function(e){
+    globalFilters.push(e.target.value)
+    let categories = applyFilters(globalFilters)
+    generateCategoryProducts(categories)
 })
 
 
-function applyFilters(filter) {
-	
-	// haine, hanorace
+function applyFilters(filter){
     console.log(filter, "filter")
-	let haine = [];
-	let hanorace = [];
-	let tricouri = [];
-	let output = [];
-	if (filter.includes('Haine')) {
-        console.log("A")
-		 haine = categoriesT.find(categ => categ.name == 'Haine')
-	}
 
-	if (filter.includes('Hanorace')) {
-		 hanorace = categoriesT.find(categ => categ.name == 'Hanorace')
-	}
+    let haine = []
+    let hanorace = []
+    let tricouri = []
 
-	if (filter.includes('Tricouri')) {
-		 tricouri = categoriesT.find(categ => categ.name == 'Tricouri')
-	}	
+    let output = null
 
-	if (tricouri && hanorace && haine) {
-        console.log("Z")
-		output = tricouri.concat(hanorace, haine)
-	}else  if (tricouri && hanorace) {
-		output = tricouri.concat(hanorace)
-	}else  if (tricouri && haine) { 
-		output = tricouri.concat(haine)
-	}else if (tricouri) {
-		output = tricouri
+    if(filter.includes("Haine")){
+        let findHaineCateg = categoriesT.find(categ => categ.name == "Haine")
+        haine.push(findHaineCateg)
+    }
 
-	}else if (haine) {
+    if(filter.includes("Hanorace")){
+        let findHanoraceCateg = categoriesT.find(categ => categ.name == "Hanorace")
+        hanorace.push(findHanoraceCateg)
+    }
+
+    if(filter.includes("Tricouri")){
+        let findTricouriCateg = categoriesT.find(categ => categ.name == "Tricouri")
+        tricouri.push(findTricouriCateg)
+    }
+
+
+    if(haine && hanorace && tricouri){
+        output = haine.concat(hanorace, tricouri)
+    } else if (haine && hanorace){
+		output = haine.concat(hanorace)
+	} else if (haine && tricouri){
+		output = haine.concat(tricouri)
+	} else if (haine){
 		output = haine
-
-	} else if (hanorace) {
+	} else if (hanorace){
 		output = hanorace
-
+	}else if (tricouri){
+		output = tricouri
 	}
-	
+
 	return output
-	 
 }
+
 
 </script>
 </html>

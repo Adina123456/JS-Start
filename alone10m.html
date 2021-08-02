@@ -307,6 +307,7 @@ function applyFilters(filter) {
 	}	
 
 	// daca cele trei inputuri tip radio sunt bifate, output-ul va fi, tricouri concatenat cu hanorce si haine
+	// de la cel mai specific la cel mai putin specific
 	if (tricouri && hanorace && haine) {
 		output = tricouri.concat(hanorace, haine)
 	// daca sunt bifate tricouri si hanorace, atunci la tricouri concatenam hanorace
