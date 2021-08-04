@@ -22,10 +22,12 @@
         .cut-price{
             text-decoration: line-through;
         }
-
-    </style>
+        
+        </style>
 
 </head>
+
+
 
 <body>
 
@@ -34,11 +36,12 @@
         <input type="radio" name="filter2" value="Hanorace">Hanorace
         <input type="radio" name="filter3" value="Tricouri">Tricouri
     </div>
-<div id="content">
-</div>
+
+<div id="content"></div>
 </body>
 
 <script>
+
 
 let categoriesT = [
 	{
@@ -201,16 +204,16 @@ for(let i=0; i<=categoriesT.length-1; i++){
         html += `</div>`
 
         endDiv++
+
         if(endDiv == categoriesT[i].products.length){
             html += `<br>`
         }
     }
+
 }
 document.getElementById("content").insertAdjacentHTML("beforeend", html)
 }
 generateCategoryProducts(categoriesT)
-
-
 
 
 let globalFilters = []
@@ -236,6 +239,7 @@ T_shirt.addEventListener("click", function(e){
     generateCategoryProducts(categories)
 })
 
+
 function applyFilters(filter){
 console.log(filter, "filter")
 
@@ -247,35 +251,34 @@ console.log(filter, "filter")
 
 if(filter.includes("Haine")){
 let findHaineCateg = categoriesT.find(categ => categ.name == "Haine")
-haine.push(findHaineCateg)
+haine.push("Haine")
 }
 
 if(filter.includes("Hanorace")){
 let findHanoraceCateg = categoriesT.find(categ => categ.name == "Hanorace")
-hanorace.push(findHanoraceCateg)
+hanorace.push("Hanorace")
 }
 
-if(filter.includes("T_shirt")){
-let findT_shirtCateg = categoriesT.find(categ => categ.name == "T_shirt")
-tricouri.push(findT_shirtCateg)
+if(filter.includes("Tricouri")){
+let findT_shirtCateg = categoriesT.find(categ => categ.name == "Tricouri")
+tricouri.push("Tricouri")
 }
 
 if(haine && hanorace && tricouri){
-    output = haine.concat(hanorace, tricouri)
-} else if (haine && hanorace){
-    output = haine.concat(hanorace)
-} else if (haine && tricouri){
-    output = haine.concat(tricouri)
-} else if (haine){
-    output = haine
-} else if (hanorace){
-    output = hanorace
-} else if (tricouri){
-    output = tricouri
+output = haine.concat(hanorace, tricouri)
+}else if(haine && hanorace){
+output = haine.concat(hanorace)
+}else if(haine && tricouri){
+output = haine.concat(tricouri)
+}else if(haine){
+output = haine
+}else if(hanorace){
+output = hanorace
+}else if(tricouri){
+output = tricouri
 }
 return output
 }
-
 
 
 </script>
