@@ -1,0 +1,162 @@
+<script>
+// 1. defineste un obiect (chei/proprietati ale obiectului)
+
+let user = {
+    firstName: "Adina",
+    isMother: true, 
+    wishes: ["mar", "par", "afine"],
+    age: 25,
+    height: 1.68
+}
+
+console.log(user.wishes, "wishes")
+
+// 2. lungimea obiectului
+
+let userKeys = Object.keys(user)
+let userLength = userKeys.length
+console.log(userKeys, "userKeys", userLength, "userLength")
+
+// 3. se afiseaza valorile obiectului
+
+let user = {
+    firstName: "Adina",
+    isMother: true,
+    wishes: ["mar", "par", "afine"],
+    age: 25,
+    height: 1.68,
+    hello: function(){
+        console.log(this.firstName + " are " + this.age + " ani ")
+    }
+}
+conosole.log(object.values(user))
+
+// 4. parcurge obiectul "user"
+
+let user = {
+    firstName: "Adina",
+    isMother: true,
+    wishes: ["mar", "par", "afine"],
+    age: 25,
+    height: 1.68,
+    hello: function(){
+        console.log(this.firstName + " are " + this.age + " ani ")
+    }
+}
+
+for(let proprety in user){
+// console.log(`${property} : ${user[property]}`)
+if(property == "firstName"){
+    console.log(user.age, "varsta") //afiseaza 25 "varsta" daca proprietatea este firstName
+
+}
+if(property == "height" && user[property] < 1.70){ //daca proprietatea height este mai < 1.70 sa se afiseze X; pt ca cheia noastra este un string "height" trb folosit [property]
+console.log("x")
+}
+}
+
+//5. 
+
+let Adina = {
+    firstName: "Adina",
+    isMother: true,
+    wishes: ["mar", "par", "afine"],
+    age: null,
+    height: 1.68,
+    hello: function(){
+        console.log(this.firstName + " are " + this.age + " ani ")
+    }
+}
+
+let Ionut = {
+    firstName: "Adina",
+    isMother: true,
+    wishes: ["mar", "par", "afine"],
+    age: 25,
+    height: 1.68,
+    hello: function(){
+        console.log(this.firstName + " are " + this.age + " ani ")
+    }
+}
+
+// daca age(Adina) este null, trebuie afisat age (Ionut)
+
+if(Adina.age !== null){
+    console.log(Ionut.age, "varsta")
+}else{
+    console.log("X")
+}
+
+// 6. daca in obiectul Adina este proprietatea eyes
+
+let Adina = {
+    firstName: "Adina",
+    isMother: true,
+    wishes: ["mar", "par", "afine"],
+    age: null,
+    height: 1.68,
+    hello: function(){
+        console.log(this.firstName + " are " + this.age + " ani ")
+    }
+}
+
+let Ionut = {
+    firstName: "Adina",
+    isMother: true,
+    wishes: ["mar", "par", "afine"],
+    age: 25,
+    height: 1.68,
+    hello: function(){
+        console.log(this.firstName + " are " + this.age + " ani ")
+    }
+}
+
+
+if(Adina.hasOwnProperty("eyes")){
+console.log("true")
+}else{
+    console.log("false")
+}
+
+
+// 7. in obiectul Ionut sa se gaseasca id-ul dorintei al carei nume este afine
+
+let Ionut = {
+    firstName: "Adina",
+    isMother: true,
+    wishes: [
+        {    
+            name: "mar",
+            id: 1
+        },
+        {
+            name: "par",
+            id: 2
+        },
+        {
+            name: "afine",
+            id: 3
+        }
+    ],
+    age: 25,
+    height: 1.68,
+    hello: function(){
+        console.log(this.firstName + " are " + this.age + " ani ")
+    }
+}
+
+let targetWish = Ionut.wishes.find(wish => wish.name == "afine")
+console.log(targetWish, "targetWish")
+
+let wishId = targetWish["id"]
+console.log(wishId, "wishId")
+
+
+
+
+
+
+
+
+
+</script>

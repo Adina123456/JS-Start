@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p>if you fuck with me, dude, i will promise you that you will regret</p>
+<p id="formatted-message"></p>
+<script type="text/javascript">
+	
+	// let a  = 1;
+	// let d = 21;
+	// let y = 2021;
+	// let string = 'Marius';
+
+	let age  = 1;
+	let day = 21;
+	let year = 2021;
+	let firstName = 'Marius';
+	// fa rost de cuvintele interzise: Care sunt cuvintele interzise in comentariile acestui articol
+	let badWords = ['fuck', 'suck', 'dick', 'idiot'];
+
+	let badWordsObject = [
+		{
+			intensity: 'high',
+			word: 'fuck',
+			replacement: '*'
+		},
+		{
+			intensity: 'medium',
+			word: 'suck',
+			replacement: '.'
+		},
+		{
+			intensity: 'low',
+			word: 'suck',
+			replacement: ''
+		}
+	]
+
+	// function footbal() {
+	// 	console.log(a + 1);
+	// }
+
+	// function nu_am_chef() {
+	// 	console.log(string + ' Pantea');
+	// }
+
+	function getUserAgeForNextYear() {
+		console.log(age + 1);
+	}
+
+	function getFullName() {
+		console.log(firstName + ' Pantea');
+	}
+
+	function getRidOfBadWords() {
+		let message = 'if you fuck with me, dude, i will promise you that you will regret. fuck'
+		let newFormattedMessage = [];
+		let messageParts = message.split(' ');
+		console.log(messageParts, 'messageParts')
+		let replaceCharacterWithNonAbusingChar = '*'
+		for (let i = 0; i <=  messageParts.length - 1; i++) {
+			let word = messageParts[i];
+			if (badWords.includes(word)) {
+				let wordLength = word.length
+				word = replaceCharacterWithNonAbusingChar.repeat(wordLength)
+				console.log(word, 'word')
+				newFormattedMessage.push(word)
+			} else {
+				newFormattedMessage.push(word)
+			}
+		}
+		document.getElementById('formatted-message').innerText = newFormattedMessage.join(' ')	
+	}
+
+	console.log(getRidOfBadWords(), 'noul mesaj')
+
+
+
+	// 1. ca sa inlocuiesc cunvintele urate dintr-un text, trebuie intai sa am textul la dispozitie
+	// 2. trebuie sa stiu ce cuvinte trebuie sa inlocuiesc in mesajul pus la dispozitie (valorile din variabila "badWords")
+	// 3. am nevoie sa stiu de la director cu ce caracter voi inlocui cuvantul urat
+	// 4. observam ca, mesajul nostru are dupa fiecare cuvant cate un spatiu
+	// 5. ca sa inlocuim cuvantele fuck, suck,etc noi trebuie sa-i gasim cate un corespondent in textul nostru
+	// 6. ca sa obtinem fiecare cuvant in parte, trebuie sa impartim mesajul nostru in cuvinte
+	// 7. cand impartim un string in mai multe stringuri(cuvinte), rezulta un array
+	// 8. trebuie sa iteram prin acel array (for) - "dinamic"
+	// 9. pentru simplitate stocam intr-o variabila, dinamic, toate cuvintele din array-ul nostru
+	// 10. trebuie sa verificam daca cuvantul nostru-actual(variabila "word") este printre cuvintele interzise
+	// 11. Daca cuvantul nostru se regaseste printre cuvintele interzie
+	// 11.a. gaseste lungimea stringului pentru a ascunde caracterele din acel cuvant
+	// 11.b cuvantul nou format va fi alcatuit din: caracterul care mascheaza litera inmultit cu lungimea cuvantului interzis 
+	// 11.c. pentru a forma un nou mesaj care sa nu contina cuvinte interzise, avem nevoie de un array gol. "linia 59"
+	// 11.d dam push la acel cuvant nou formatat in array-ul nou.
+	// 12. daca nu este printre cuvintele interzise dai doar push, fara sa intervii asupra cuvantului
+	// 13. return sau append in DOM cu array-ul nou format din cuvintele cenzurate si necenzurate (linia 74)
+	// 13. a. daca vrei sa vezi in pagina acel mesaj trebuie sa iei paragraful cu id-ul "formatted-message" si sa-i setezi proprietatea "innerHtml" 
+	// cu valoarea array-ul nou format "newFormattedMessage" . join(' '). 
+	// 13.b string.join(' '), din array-ul nou formatat functia join ti-l transforma in string 
+
+
+
+
+// alta varianta - Seful ne cere sa inlocuim caracterele speciale dintr-un comentariu, in afara de *, iar totul sa functioneze ca inainte.  Adica sa cenzureze cuvintele obscene
+
+function getRidOfBadWords(){
+	let message = "if.you@fuck@@with me, dude, i/will!promise#you##that!!you**will***regret.fuck"
+let newFormattedMessage = [];
+// inainte sa facem split pentru fiecare spatiu, trebuie sa inlocuim "@", "@@", "/", "!", "#", "##", "!!", "**", "***" cu spatii 
+// si codul va functiona la fel
+
+message = message.split("@", "")
+message = message.spilt("@@", "")
+message = message.split("." ,"")
+message = message.split("/", "")
+message = message.split("!", "")
+message = message.split("#", "")
+message = message.split("##", "")
+message = message.split("!!", "")
+message = message.split("**", "")
+message = message.split("***", "")
+
+console.log(message, "message")
+let messageParts = message.split(""); 
+console.log(messageParts, "messageParts")
+let replaceCharacterWithNonAbusingChar = "*"; 
+
+for(let i=0; i<=messageParts.length-1; i++){
+let messageParts = messageParts[i];
+if(badWords.includes(word)){
+let wordLength = word.length
+word = replaceCharacterWithNonAbusingChar.repeat(wordLength)
+console.log(word,"word")
+newFormattedMessage.push(word)
+}else{
+	newFormattedMessage.push(word)
+}
+}
+document.getElementById("formatted-message").innerText = newFormattedMessage.join("")
+}
+
+</script>
+</body>
+</html>		

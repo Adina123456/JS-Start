@@ -1,0 +1,127 @@
+<html>
+<head>
+    <style>
+        .red {
+            color:darkred;
+        }
+
+        .blue {
+            color:blue;
+        }
+
+        .yellow {
+            color:yellow;
+        }
+
+        .green {
+            color:green;
+        }
+    </style>
+</head>
+<body>
+<p id="text">Schimba textul apasand pe el</p>
+<!--inputurile de tip radio au particularitatea urmatoare..atat timp cat au acelasi nume(name)(in cazul nostru - "color") acestea pot fi selectate pe rand-->
+    <input type="radio" name="color" value="red" onclick="changeColor('red')">Red
+    <input type="radio" name="color" value="blue" onclick="changeColor('blue')">Blue
+    <input type="radio" name="color" value="yellow" onclick="changeColor('yellow')">Yellow
+    <input type="radio" name="color" value="green" onclick="changeColor('green')">Green
+
+    <input onchange="changeFontSize()" id="font-size" type="number" min="1" max="500" name="font-size">
+<!--JS SCRIPTS-->
+<script>
+
+  let age = '12';
+  let sex = 'F';
+
+  // false mai este cunoscut ca si 0]
+  // true mai este cunoscut ca si 1
+  // if ('asd123') {
+  //   alert('intra');
+  // }
+  //
+  // if (age == 22) {
+  //   alert('intra sau nu?!')
+  // }
+  //
+  //
+  // // aici compar string "18" === 18 integer
+  // if (age === 24) {
+  //   alert('intra sau nu?!')
+  // }
+  //
+  // // level 200iq
+  // if (age == '12' && sex == 'M') {
+  //   alert('este');
+  // } else if (sex == 'F') {
+  //   alert('nu stiu!?')
+  // } else {
+  //   alert('nu este');
+  // }
+
+  // level 1000iq
+  // let is_online = 0; // 1/true/'asdasdas',1.22
+  // //let is_online = 1; // 0/false
+  // if (!is_online) {
+  //   alert('A')
+  // } else {
+  //   alert('B')
+  // }
+
+// Alt exercitiu
+  let color = 'yellow';
+
+  switch(color) {
+    case 'blue':
+      console.log('imi place albastru');
+      break;
+    case 'yellow' :
+      console.log('imi place galben')
+      break;
+  }
+
+    document.addEventListener('DOMContentLoaded', function (event)  {
+        //alert('the page is loaded');
+        // let element = document.getElementById('red')
+        // element.addEventListener('click', function(event) {
+        //     event.target.classList.add('red')
+        // })
+
+    });
+  function changeColor(color)
+  {
+    console.log(color, 'culoarea atasata acestei functii')
+    // targheteaza elementul pe care vrei sa-l schimbi
+    let element = document.getElementById('text')
+    // stergem toate clasele pe care le are acest element
+    element.classList = '';
+    // adaugam o clasa noua acestui element
+    element.classList.add(color)
+  }
+
+  function changeFontSize()
+  {
+    // Cum cauti
+
+    // 1.how to get the element by id in javascript
+    //https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_document_getelementbyid
+
+    //2. numberObject.value si https://www.w3schools.com/jsref/prop_number_value.asp
+
+
+    //  imi iau valoarea de pe inputul care schimba marimea textului
+    // cu functia getElementById gasim in pagina noastra elementul cu id-ul font-size
+    let fontSize = document.getElementById('font-size')
+    // ne folosim de elementul gasit mai sus pentru ai lua valoarea
+    let fontSizeValue = fontSize.value
+    console.log(fontSizeValue, 'fontSizeValue')
+    // targheteaza elementul pe care vrei sa-l schimbi
+    let targetElement = document.getElementById('text')
+    // 3. https://www.w3schools.com/jsref/prop_style_fontsize.asp si document.getElementById("demo").style.fontSize = "x-large";
+
+    targetElement.style.fontSize = fontSizeValue
+  }
+
+
+</script>
+</body>
+</html>

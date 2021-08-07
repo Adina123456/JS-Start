@@ -1,0 +1,99 @@
+<script>
+
+// metode pentru tipuri de data numit string
+// a. 
+
+let word = "mama are intuitie"
+
+console.log(word.length, "lungimea stringului word"); 
+
+// b. imparte stringul dupa fiecare spatiu
+
+let wordParts = word.split(" ");
+console.log(wordParts, "wordParts");
+
+// c. vreau sa repet stringul "x" de 6 ori
+
+let itemChar = "x"
+
+console.log(itemChar.repeat(6));
+
+// d. vreau sa gasesc prima litera a stringului word
+
+let word = "mama are intuitie"
+
+// [m, a, m, a, , a, r, e]
+
+console.log(word[0])
+
+console.log(word[8])
+
+let firstChar = word.substring(0,1);
+console.log(firstChar, "prima litera din string");
+
+console.log(word.slice(0,0), "atentie");
+
+console.log(word.charAt[16])
+
+
+// vreau sa imi formez stringul mama-are-intuitie
+
+let words = word.split(" ")
+
+let newString = words.join("-")
+console.log(newString, "string nou")
+
+// 2.
+let message = "hello my name is Adina"
+
+// verifica daca cuvantul Adina este prezent in stringul meu
+
+console.log(message.includes("Adina"), "boolean")
+
+// 3.
+
+let email = "          adinalavinia@gmail.com"
+
+// vreau sa scot spatiile din string
+
+let newEmail = email.split(" ").join("")
+console.log(newEmail, "newEmail")
+
+
+let email = "          adinalavinia@gmail.com"
+let newEmail2 = email.trim()
+console.log(newEmail2)
+
+
+// 4. a. vreau sa concatenez doua stringuri
+
+let a = "rosu"
+let b = "negru"
+
+let result = a.concat(b); 
+console.log(result, "result")
+
+// 4. b. 
+
+a += b
+console.log(a)
+// se citeste a=a+b
+
+
+// 5. cu ce incepe sau se termina un string
+
+let startsWith = "Dexter is a genious"
+
+startsWith.startsWith("D")
+startsWith.endsWith("genious")
+
+//6. 
+
+let phoneNumber = "xx741xx"
+
+let newPhoneNumber = phoneNumber.replaceAll("x", 0)
+console.log(newPhoneNumber)
+
+
+
+</script>

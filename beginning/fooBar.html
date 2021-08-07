@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+// 1. Avem numerele de la 1 la 50, inclusiv, si vrem sa afisam "fooBar" pentru numerele care se impart la 15 si divizorii lui. Adica 3 si 5. Daca numarul se imparte la 3, afiseaza "foo", iar daca numarul se imparte la 5, afiseaza "bar".
+
+function fooBar(){
+
+    for(let i=1; i<=50; i++){
+        if(i % 3 == 0 && i % 5 == 0){
+            console.log("fooBar. numarul este" + i)
+        }else if(i % 3 == 0){
+            console.log("foo. numarul este" + i)
+        }else if(i % 5 == 0){
+            console.log("bar. numarul este" + i)
+        }
+    }
+}
+fooBar()
+
+
+</script>
+</body>
+</html>

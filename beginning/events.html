@@ -1,0 +1,66 @@
+<html>
+<head>
+
+</head>
+<body>
+    <p id="click"> click me
+        <!-- id-ul reprezinta un atribut html care este unic in toata pagina; daca ai alt element cu id-ul click in pagina vei primi erori -->
+        </p>
+
+        <label for="fname">First name:</label>
+        <input type="text" id="abcd" name="abc"><br><br>
+
+
+    </body>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+let target = document.getElementById("click")
+
+// target.addEventListener("click", displayDate);
+// function displayDate() {
+//     alert("Adina invata JS")
+// }
+target.addEventListener("click", function(){
+    alert("Adina invata JS")
+})
+
+
+// exercitiul ***
+let input = document.getElementById("abcd") // targetam elementul cu id-ul abcd
+
+// ii atasam evenimentul de input
+
+// 1. atasarea input-ului eveniment prin intermediul caruia sa se vada in consola lungimea cuvantului pe care il scriu
+// *** 
+input.addEventListener('input', function(y){
+    
+    let stringLength = y.target.value.length // lungimea stringului pe care il scriu 
+    // daca stringul este cuprins intre 5 si 10 vreau sa schimb textul paragrafului cu id-ul click in rosu; 
+    // daca stringul este cuprins intre 11 si 16 vreau sa schimb textul paragrafului cu id-ul click in albastru; 
+    
+    let paragraph = document.getElementById("click") 
+
+if(stringLength>=5 && stringLength<=10){
+console.log("este intre 5 si 10")
+paragraph.style.color = "red"
+}else if(stringLength>=11 && stringLength<=16){
+console.log("este intre 11 si 16")
+paragraph.style.color = "blue"
+}
+
+})
+})
+
+
+
+// *** vreau sa scriu intr-un input
+// targetam acel input dupa un atribut al lui (name, id, data attribute, class sau chiar elementul in sine daca este unic in pagina)
+// am nevoie sa ii atasez un eveniment corespunzator cu ce am eu de facut: Adina, am nevoie ca atunci cand scriu in inputul: "First name:"" daca lungimea stringului este cuprinsa
+// intre 5 si 10 sa imi afisezi textul paragrafului cu id-ul "click" cu rosu; 
+// daca lungimea stringului pe care in scriu in input este intre 11 si 16 vreau ca textul paragrafului cu id-ul click sa fie albastru
+
+
+
+</script>
+</html>

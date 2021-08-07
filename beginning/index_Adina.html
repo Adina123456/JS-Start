@@ -1,0 +1,189 @@
+<html>
+<head>
+    <style>
+        .red {
+            color:darkred;
+        }
+
+        .blue {
+            color:blue;
+        }
+
+        .yellow {
+            color:yellow;
+        }
+
+        .green {
+            color:green;
+        }
+    </style>
+</head>
+<body>
+<p id="text">Schimba textul apasand pe el</p>
+<!--inputurile de tip radio au particularitatea urmatoare..atat timp cat au acelasi nume(name)(in cazul nostru - "color") acestea pot fi selectate pe rand-->
+   
+    <input type="radio" name="color" value="green" onclick="changeColor('green')">Green
+
+    <input onchange="changeFontSize()" id="font-size" type="number" min="1" max="500" name="font-size">
+
+    <p onclick="myFunction()">
+      inverseaza array-ul 
+    </p>
+<div id="reversed">
+
+</div>
+
+<!--JS SCRIPTS-->
+<script>
+
+  let age = '12';
+  let sex = 'F';
+  // false mai este cunoscut ca si 0
+  // true mai este cunoscut ca si 1
+
+  if ('asd123') {
+  alert('intra');
+  }
+  
+  if (age == 22) {
+  alert('intra sau nu?!')
+  }
+
+  // aici compar string "18" === 18 integer
+  if (age === 24) {
+   alert('intra sau nu?!')
+   }
+
+  // level 200iq
+  if (age == '12' && sex == 'M') {
+   alert('este');
+  } else if (sex == 'F') {
+   alert('nu stiu!?')
+  } else {
+   alert('nu este');
+  }
+
+  // level 1000iq
+  let is_online = 0; // 1/true/'asdasdas',1.22
+  let is_online = 1; // 0/false
+  if (!is_online) {
+  alert('A')
+  } else {
+  alert('B')
+  }
+
+
+
+// Alt exercitiu
+  let color = 'yellow';
+
+  switch(color) {
+    case 'blue':
+      console.log('imi place albastru');
+      break;
+    case 'yellow' :
+      console.log('imi place galben')
+      break;
+  }
+
+    document.addEventListener('DOMContentLoaded', function (event)  {
+      //array
+      //cum declaram o variabila in javascript: 1. LET = VAR; 2. CONST 
+      const Buttons =  getcolors("black", "purple") //adaugam red dupa 
+      console.log (Buttons, "butoane")
+      let reversedButtons=Buttons.reverse()
+      console.log (reversedButtons, "este inversat")
+      let html=""
+      console.log (Buttons.length, "marime")
+      for (i = 0; i<=Buttons.length-1; i++) {
+      
+        console.log(i, "afisam i")
+        html += `<input type='radio' onclick='changeColor(${Buttons[i]})'>`
+        html += `<input type='radio' onclick='changeColor(${Buttons[0]})'>`
+      
+
+
+      }
+      console.log(html, "string")
+
+
+      alert('the page is loaded');
+      let element = document.getElementById('red')
+      element.addEventListener('click', function(event) {
+      event.target.classList.add('red')
+      })
+
+    });
+
+  function changeColor(color) {
+    console.log(color, 'culoarea atasata acestei functii')
+    // targheteaza elementul pe care vrei sa-l schimbi
+    let element = document.getElementById('text')
+    // stergem toate clasele pe care le are acest element
+    element.classList = '';
+    // adaugam o clasa noua acestui element
+    element.classList.add(color)
+  }
+
+  function changeFontSize(){
+    // Cum cauti
+
+    // 1.how to get the element by id in javascript
+    //https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_document_getelementbyid
+
+    //2. numberObject.value si https://www.w3schools.com/jsref/prop_number_value.asp
+
+
+    //  imi iau valoarea de pe inputul care schimba marimea textului
+    // cu functia getElementById gasim in pagina noastra elementul cu id-ul font-size
+    
+    let fontSize = document.getElementById('font-size')
+    // ne folosim de elementul gasit mai sus pentru ai lua valoarea
+    let fontSizeValue = fontSize.value
+    console.log(fontSizeValue, 'fontSizeValue')
+    // targheteaza elementul pe care vrei sa-l schimbi
+    let targetElement = document.getElementById('text')
+    // 3. https://www.w3schools.com/jsref/prop_style_fontsize.asp si document.getElementById("demo").style.fontSize = "x-large";
+
+    targetElement.style.fontSize = fontSizeValue
+  }
+// functia getcolors primeste ca parametru "colors"
+// daca in functia getcolors avem o variabila cu acelasi nume ca si parametrul functiei, parametrul functiei ii va lua locul
+  function getcolors(colors1, colors2){
+
+   let array= ["red", "blue", "yellow", "green", "kjb", "bbj"]
+   array.push(colors1)
+   array.push(colors2)
+   console.log(array, "array modificat")
+  return array
+
+  }
+
+function myFunction() {
+console.log("a")
+const colors =  getcolors("black", "purple")
+colors.reverse()
+console.log(colors)
+let html="<ol>";
+  for (i=0; i<=colors.length-1; i++){
+    html += "<li>"+colors[i] +"</li>"
+
+  }
+html+= "</ol>"
+
+//am creat un div 
+var child = document.createElement('div');
+//i-am pus valoarea html-ului elementului child
+child.innerHTML = html;
+child = child.firstChild;
+//am cautat in dom div-ul cu id-ul reversed si i-am dat append elementului child
+document.getElementById('reversed').appendChild(child);
+}
+
+</script>
+</body>
+</html>
+
+
+
+

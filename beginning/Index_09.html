@@ -1,0 +1,42 @@
+<script>
+
+let values = ["Alex", "Stresul", 61, "Impresar", "fotbal", "baschet"]
+
+let user = {id: '3', firstName: "Alex", lastName: "Stresul", age: 61, role: "Impresar"}
+
+// daca una sau mai multe valori din array-ul "values" se gaseste in obiecul "user" ca si valoare, afiseaza-mi "a"; daca nu, "b"
+
+// 1. iteram prin array-ul "values" (for)
+// 2. luam toate cheile obiectului "user"
+// 3. iteram toate cheile obiectului "user" 
+// 4. daca valoarea din array-ul "values" este egala cu "user[objK]" afiseaza "a", daca nu, afiseaza "b"
+ 
+// 1.
+for (i=0; i<=values.length-1; i++) {
+    let item = values[i]
+    console.log(item)
+
+
+    // 2. 
+    let objectKeys= Object.keys(user)
+    console.log(objectKeys, "objectKeys")
+
+    // 3. 
+    for (j=0; j<= Object.keys(user).length-1; j++){
+    console.log(objectKeys[j], "cheile obiectului user")
+
+        //4.
+        let objK = Object.keys(user)[j]
+
+        if (item==user[objK]&&values.includes(item)) {
+        console.log(item, "a")
+
+        } else {
+            console.log(item, "b")
+        }
+
+    }
+
+}
+
+</script>

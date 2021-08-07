@@ -1,1 +1,18 @@
-1. 
+1. checkbox - explicatii suplimentare
+
+let clothes = document.getElementsByName("filter1")[0];
+clothes.addEventListener("click", function (e) {
+    if (e.target.checked == true)
+      globalFilters.push(e.target.value);
+    else {
+      globalFilters = globalFilters.filter(filter => filter !== 'Haine')
+    }
+
+    let categories = applyFilters(globalFilters)
+    if (!categories.length) categories = categoriesT
+    generateCategoryProducts(categories)
+
+  })
+
+
+2. 

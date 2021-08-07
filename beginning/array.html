@@ -1,0 +1,196 @@
+<script>
+
+
+// functii pentru array-uri 
+
+let colors = ["red", "black", "white", "blue"]
+
+console.log(colors.length) // afiseaza toate culorile
+
+console.log(colors.push("yellow")) // adauga yellow la sfarsit
+
+console.log(colors.unshift("purple")) // adauga la inceputul array-ului
+
+console.log(colors.pop("blue")) // ultimul element din array - afisare
+let removedColor = colors.pop("blue")
+console.log(removedColor, "removedColor")
+
+
+console.log(colors.shift("red")) // sterg primul element din array apoi afisare
+let removedColor2 = colors.shift("red")
+console.log(removedColor2, "removedColor2")
+
+
+//selectare primele doua valori din array-ul colors
+
+let newArray = colors.slice(0, 1)
+console.log(newArray, "newArray")
+
+// 2.
+// verificam daca exista cel putin un element in array care indeplineste conditia r>=100 (test if a condition)
+
+let numbers = [1, 2, 3, 4, 5, 100]
+let numbersCheck = numbers.some(r=>r>=100);
+console.log(numbersCheck, "boolean")
+
+
+// 3. 
+// inversare array
+
+let colors = ["red", "black", "white", "blue"]
+let reverse = colors.reverse()
+console.log(reverse, "reverse")
+
+
+
+// 4.
+// sa afisam toate cuvintele care incep cu a
+
+//  varianta 2021 - let wordsWithAChar = words.filter((character) => character.startWith("a"))
+let words = ["abc", "abd", "cde", "ajf"]
+//varianta 99
+let wordsWithAChar = words.filter(function (character) {return character.startsWith("a")})
+console.log(wordsWithAChar)
+
+// sa se verifice daca obiectul(obj) este array
+
+let obj = {}
+Array.isArray(obj)
+console.log(Array.isArray(obj))
+
+
+// verificam daca toate elementele sunt mai mari decat 2
+
+let numbers = [1, 2, 3, 4, 5, 100]
+
+let result = numbers.every( (e) => e >2);
+console.log(result, "result")
+
+
+
+//5. lungimea stringului este mai mare ca 4
+
+let colors = ["red", "blue", "yellow"] // sa se intoarca doar yellow
+let flowers = ["rose", "tulip", "violet"] // sa se intoarca doar tulip si violet
+
+let newColors = colors.filter((color) => color.length > 4)
+let newFlowers = flowers.filter((flower) => flower.length > 4)
+
+let result = newFlowers.concat(newColors)
+console.log(result, "result")
+
+
+// 6. afiseaza in ordine crescatoare elementele din array dupa prima cifra: 0,1,2...
+// intai afiseaza numerele apoi literele
+
+let numbers = ["1","b", "a", "15", "21", "30"]
+let sortedNumbers = numbers.sort()
+console.log(sortedNumbers, "sortedNumbers")
+
+
+// afiseaza in ordine crescatoare indiferent de prima cifra
+
+let numbers1 = [1, 21, 15, 30]
+let sortedNumbers1 = numbers1.sort()
+console.log(sortedNumbers1, "sortedNumbers1")
+
+
+//7. afisare de la al 6-lea nr pana la ultimul numar crescator (sortare) + dinamic
+
+    function get(){
+        let numbers1 = [1, 21, 15, 30, 100, 6000, 467, 333]
+        let sortedNumbers1 = numbers1.sort((a,b) => a-b)
+    console.log(sortedNumbers1, "sortedNumbers1")
+        let newNumbers1 = numbers1.slice(5, sortedNumbers1.length)
+    console.log(newNumbers1, "newNumbers1")
+        let newNumbers1Length = newNumbers1.filter((numbers) => {
+            return numbers.toString().length > 3
+        })
+        console.log(newNumbers1Length, "newNumbers1Length")
+    }
+get()
+
+// unui numar nu-i putem afla lungimea decat daca il transformam intr-un string
+
+
+// 8. for; apoi numarul daca este mai mic decat n, sa nu il afiseza
+
+let stratsFrom = 35
+function greaterThan(n=20){
+    let numbers1 = [1, 21, 15, 30, 100, 6000, 467, 333]
+    for(let i=0; i<numbers1.length-1; i++){
+        if(numbers1[i]<n){
+                
+        }else {
+            console.log(n, "afiseaza")
+        }
+    }
+}
+
+greaterThan()
+
+// tu ai cerut 2.5 k si ai scris varianta 1. unu care a cerut 2.6 k, dar a scris varianta 2, va fi luat in locul tau
+// daca altcineva scrie varianta 3, ceilalti doi dinainte nu vor fi anagajati
+
+    // varianta 1
+    function greaterThan(n=20){
+        let numbers1 = [1, 21, 15, 30, 100, 6000, 467, 333]
+        let copyOfNumbers1 = [];
+        
+        for(let i = 0; i < numbers1.length - 1; i++){
+            if(parseInt(numbers1[i]) < parseInt(n)){
+                //
+            } else {
+              copyOfNumbers1.push(numbers1[i])
+            }
+        }
+
+        console.log(copyOfNumbers1);
+    }
+
+    console.log(greaterThan())
+
+
+// varianta 2. functia ParseInt() iti forteaza stringul: ex- "1" in integerul 1
+
+    function greaterThan(n=20){
+        let numbers1 = [1, 21, 15, 30, 100, 6000, 467, 333]
+        let copyOfNumbers1 = [];
+        
+        for(let i = 0; i < numbers1.length - 1; i++){
+            if(parseInt(numbers1[i]) > parseInt(n)){
+              copyOfNumbers1.push(numbers1[i])
+            } 
+        }
+        console.log(copyOfNumbers1);
+    }
+
+    greaterThan()
+
+    // varinta 3. aceasta varianta foloseste asa numitul "early returns", adica scapa de ce nu este "folositor" si treci mai departe, la urmatorul numar
+
+    // vezi primele 3 iteratii. numarul numbers1[i] este mai mic decat n, primit ca parametru, deci continua pana la urmatorul care este 22
+
+     function greaterThan(n=20){
+        //let numbers1 = [1, 21, 15, 30, 100, 6000, 467, 333]
+              let numbers1 = [11,12,,13, 22, 23,24,25,26,27,28,29,30]
+        let copyOfNumbers1 = [];
+        
+        for(let i = 0; i < numbers1.length - 1; i++){
+
+            if (parseInt(numbers1[i]) < parseInt(n)) {
+                    continue;
+            }
+        
+        // AICI
+            copyOfNumbers1.push(numbers1[i])
+           
+        }
+        console.log(copyOfNumbers1);
+    }
+
+    greaterThan()
+
+
+
+</script>
