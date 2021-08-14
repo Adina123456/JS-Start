@@ -1,0 +1,95 @@
+<html>
+<script>
+
+
+// ['ana_maria@gmail.com', 'marius_pantea@mesteresti.ro', 'oana@mesteresti.ro', 'gigi_becali@fcsb.ro']
+
+// am nevoie sa creez un nume pentru fiecare email bazandu-ma pe adresa de email
+
+// ex: {
+	
+// 	name:Ana Maria
+// 	email: ana_maria@gmail.com
+// },
+// {
+	
+// 	name: Marius Pantea
+// 	email: marius_pantea@mesteresti.ro
+// },
+// {
+	
+// 	name: Oana
+// 	email: oana@mesteresti.ro
+// },
+// {
+	
+// 	name: Oana
+// 	email: oana@mesteresti.ro
+// },
+
+
+let emails = ['ana_maria@gmail.com', 'marius_pantea@mesteresti.ro', 'oana@mesteresti.ro', 'gigi_becali@fcsb.ro']
+
+let users = []
+
+for(let i=0; i<=emails.length-1; i++){
+    let user = {}
+
+    let email = emails[i]
+
+    let targetIndex = email.indexOf("@")
+    
+    let finalEmail = email.substring(0, targetIndex)
+    
+    let userName = finalEmail.split("_").join(" ")
+    
+    user.name = userName
+    user.email = email
+
+    users.push(user)
+
+}
+
+console.log(users, "users")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

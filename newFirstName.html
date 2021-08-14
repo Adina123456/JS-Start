@@ -1,0 +1,101 @@
+<html>
+    <script>
+
+['ana Maria', 'bogdan Spiridon', 'Adina-Lavinia G.', 'Alexandru-Marian Andrei']  
+// cerinta: // pentru numele format din nume + prenume prima litera atat din numele si prenumele sa fie cu litera mare. 
+// Daca o persoana are un  nume + prenume multiplu() format din mai multe nume), atunci cel de-al doilea prenume  sa inceapa cu litera mica 
+Ex: Ana Maria, Adina-lavinia G., Alexandru-marian Andrei
+
+
+// for 
+// split dupa minus -
+// voi verifica daca cuvantul meu contine minus;  daca contine trebuie facut split dupa minus; 
+// daca nu contine minus => split dupa spatiu
+
+
+let names = ['ana Maria', 'bogdan Spiridon', 'Adina-Lavinia G.', 'Alexandru-Marian Andrei']
+let newNames = []
+
+for(let i=0; i<=names.length-1; i++){
+
+    let name = names[i]
+
+    let multipleFirstNameIndex = name.indexOf("-")
+
+    if(multipleFirstNameIndex !== -1){
+        let firstNameParts = name.split("-")
+        let secondIndexFirstName = capitalizeFirstLetter(firstNameParts[1])
+    
+        firstNameParts[1] = secondIndexFirstName  // l-am suprascris in lavinia G.
+        let fullNameFormatted = firstNameParts.join("-")
+      
+        newNames.push(fullNameFormatted)
+
+    } else {
+
+        let firstNameParts01 = name.split(" ")
+        let firstNameNewElse = []
+        let counter = 0
+
+        for(let j=0; j<=firstNameParts01.length-1; j++){
+            let firstNameElse = firstNameParts01[j]
+            let firstNameElseFormatted = capitalizeFirstLetterElse(firstNameElse)
+            firstNameNewElse.push(firstNameElseFormatted)
+            counter++
+
+            if(counter == firstNameParts01.length){
+                newNames.push(firstNameNewElse.join(" "))
+                
+            }
+        }
+
+    }
+}
+
+console.log(newNames, "newNames")
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toLowerCase() + string.slice(1);
+  }
+
+  function capitalizeFirstLetterElse(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+
+
+
+
+  // versiune Marius
+
+
+  ['ana Maria', 'bogdan Spirion', 'Adina-Lavinia G.', 'Alexandru-Marian Andrei']
+
+  // cerinta:
+  // pentru numele format din nume + prenume prima litera atat din numele si prenumele sa fie cu litera mare. Daca o persoana are un  nume + prenume multiplu() format din mai multe nume), atunci cel de-al doilea prenume  sa inceapa cu litera mica
+  Ex: Ana Maria, Adina-lavinia G., Alexandru-marian Andrei
+  
+  let array = ['ana Maria', 'bogdan Spirion', 'Adina-Lavinia G.', 'Alexandru-Marian Andrei']
+  let newFormattedArray = []
+  for (let i = 0 ; i<=array.length - 1; i++) {
+      let name = array[i];
+      let multipleFirstName = name.indexOf('-')
+  
+      if (multipleFirstName !== -1) {
+          let firstNameParts = name.split('-')
+          let lowerCaseSecondFirstName = firstNameParts[1].charAt(0).toLowerCase() + firstNameParts[1].slice(1); 
+          firstNameParts[1] = lowerCaseSecondFirstName
+          newFormattedArray.push(firstNameParts.join('-'))
+      } else {
+          let nameParts = name.split(' ')
+        console.log(nameParts)
+          newFormattedArray.push(nameParts.map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(' '))
+      }
+  }
+  
+  console.log(newFormattedArray)
+
+  
+
+</script>
+  </html>

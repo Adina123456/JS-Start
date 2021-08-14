@@ -1,0 +1,67 @@
+<html>
+<script>
+
+let words = ["red", "blue", "animal", "fish", "gold", "goose", "mother"]
+
+// am nevooie ca din acest array sa filtrezi doar acele cuvinte care:
+
+// 1. contin litera "e"
+// 2. cele care contin litera "e", vreau sa vad care au mai mult de 3 caractere
+// 3. dupa ce ai identificat cuvintele de la pct 2, vreau sa mi le "unesti" cu "-" intre ele 
+
+// 1. 
+
+let wordsWithEChar = words.filter(function(word){
+    return word."contine()"litera e 
+})
+
+let wordsWithEChar = words.filter(function(word){
+    return word.includes("e")
+})
+// includes - returneaza true sau false
+// functia filter filtreaza apoi arata
+// functia filter creeaza un nou array
+
+// 2. 
+
+let filterWordsWithEChar = wordsWithEChar.filter(function(word){
+    if(word."lungimea stringului" > 3){
+        return true
+    }
+    return false
+})
+
+let filterWordsWithEChar = wordsWithEChar.filter(function(word){
+    if(word.length > 3){
+        return true
+    }
+    return false
+})
+
+
+// 3.
+
+console.log(filterWordsWithEChar."uneste"("-"))
+
+console.log(filterWordsWithEChar.join("-"))
+
+
+
+
+
+let words = ["red", "blue", "animal", "fish", "gold", "goose", "mother"]
+let wordsWithEChar = words.filter(function(word){
+    return word.includes("e")
+})
+let filterWordsWithEChar = wordsWithEChar.filter(function(word){
+    if(word.length > 3){
+        return true
+    }
+    return false
+})
+console.log(filterWordsWithEChar.join("-"))
+
+
+
+</script>
+</html>
